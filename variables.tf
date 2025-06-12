@@ -1,0 +1,2 @@
+
+variable "AWS_REGION" {}
