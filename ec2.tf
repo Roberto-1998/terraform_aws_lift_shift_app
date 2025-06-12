@@ -48,3 +48,28 @@ resource "aws_instance" "vprofile-mc01" {
 
 
 }
+
+resource "aws_instance" "vprofile-rmq01" {
+  ami                    = data.aws_ami.amazon_linux.id
+  instance_type          = "t3.micro"
+  key_name               = aws_key_pair.vprofile-backend-key.key_name
+  vpc_security_group_ids = [aws_security_group.vprofile-backend-SG.id]
+
+  tags = {
+    Name    = "vprofile-rmq01"
+    Project = var.PROJECT
+  }
+
+  connection {
+    type        = "ssh"
+    user        = "ec2-user"
+    private_key = file("vprofile-backend-key")
+    host        = self.public_ip
+  }
+
+  provisioner "remote-exec" {
+    script = "${path.module}/scripts/rabbitmq.sh"
+  }
+
+
+}
