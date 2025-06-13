@@ -1,0 +1,5 @@
+# Created at 2025-06-13T11:02:27.159
+Boot Manifest-JAR contains absolute paths in classpath 'D:\DevOps\projects\terraform_aws_lift_shift_app\main-app\vprofile-project\target\test-classes'
+Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
+'other' has different root
+
