@@ -99,11 +99,3 @@ resource "aws_instance" "vprofile-app01" {
   }
 }
 
-output "privateIps" {
-  value = {
-    vprofile-db01=aws_instance.vprofile-db01.private_ip
-    vprofile-mc01=aws_instance.vprofile-mc01.private_ip
-    vprofile-rmq01=aws_instance.vprofile-rmq01.private_ip
-    vprofile-app01=aws_instance.vprofile-app01.private_ip
-  }
-}
