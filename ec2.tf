@@ -81,7 +81,7 @@ resource "aws_instance" "vprofile-app01" {
   instance_type          = "t3.micro"
   key_name               = aws_key_pair.vprofile-app-key.key_name
   vpc_security_group_ids = [aws_security_group.vprofile-app-SG.id]
-
+  iam_instance_profile   = aws_iam_instance_profile.vprofile_instance_profile.name
   tags = {
     Name    = "vprofile-app01"
     Project = var.PROJECT

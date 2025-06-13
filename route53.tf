@@ -1,13 +1,13 @@
 resource "aws_route53_zone" "private" {
   name = "vprofile.in"
-  
-  
+
+
   vpc {
     vpc_id = data.aws_vpc.default.id
   }
 
   tags = {
-    Project=var.PROJECT
+    Project = var.PROJECT
   }
 }
 
@@ -45,9 +45,9 @@ resource "aws_route53_record" "app01_record" {
 
 output "privateRoutes" {
   value = {
-    vprofile-db01=aws_route53_record.db01_record.fqdn
-    vprofile-mc01=aws_route53_record.mc01_record.fqdn
-    vprofile-rmq01=aws_route53_record.rmq01_record.fqdn
-    vprofile-app01=aws_route53_record.app01_record.fqdn
+    vprofile-db01  = aws_route53_record.db01_record.fqdn
+    vprofile-mc01  = aws_route53_record.mc01_record.fqdn
+    vprofile-rmq01 = aws_route53_record.rmq01_record.fqdn
+    vprofile-app01 = aws_route53_record.app01_record.fqdn
   }
 }
