@@ -23,18 +23,21 @@ resource "aws_lb_target_group" "vprofile-las-TG" {
   protocol    = "HTTP"
   target_type = "instance"
   vpc_id      = data.aws_vpc.default.id
+  stickiness {
+    type = "lb_cookie"
+  }
   tags = {
     Name    = "vprofile-las-TG"
     Project = var.PROJECT
   }
 }
 
-resource "aws_lb_target_group_attachment" "vprofile-instance" {
+/* resource "aws_lb_target_group_attachment" "vprofile-instance" {
   target_group_arn = aws_lb_target_group.vprofile-las-TG.arn
   target_id        = aws_instance.vprofile-app01.id
   port             = 8080
 }
-
+ */
 
 resource "aws_lb_listener" "front_end" {
   load_balancer_arn = aws_lb.vprofile-ALB.arn
