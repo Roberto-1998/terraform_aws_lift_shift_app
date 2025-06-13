@@ -4,6 +4,7 @@ resource "aws_instance" "vprofile-db01" {
   key_name               = aws_key_pair.vprofile-backend-key.key_name
   vpc_security_group_ids = [aws_security_group.vprofile-backend-SG.id]
 
+
   tags = {
     Name    = "vprofile-db01"
     Project = var.PROJECT
@@ -96,6 +97,13 @@ resource "aws_instance" "vprofile-app01" {
   provisioner "remote-exec" {
     script = "${path.module}/scripts/tomcat.sh"
   }
+}
 
-
+output "privateIps" {
+  value = {
+    vprofile-db01=aws_instance.vprofile-db01.private_ip
+    vprofile-mc01=aws_instance.vprofile-mc01.private_ip
+    vprofile-rmq01=aws_instance.vprofile-rmq01.private_ip
+    vprofile-app01=aws_instance.vprofile-app01.private_ip
+  }
 }
