@@ -40,3 +40,6 @@
 
      systemctl start tomcat10
      ```
+6. **Credentials for the app interface**
+   user: admin_vp
+   password: admin_vp

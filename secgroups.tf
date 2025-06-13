@@ -56,6 +56,14 @@ resource "aws_vpc_security_group_ingress_rule" "allow_http_ipv4_from_LB" {
   to_port                      = 8080
 }
 
+resource "aws_vpc_security_group_ingress_rule" "allow_http_ipv4_from_MyIP" {
+  security_group_id = aws_security_group.vprofile-app-SG.id
+  cidr_ipv4         = "${var.MYIP}/32"
+  from_port         = 8080
+  ip_protocol       = "tcp"
+  to_port           = 8080
+}
+
 resource "aws_vpc_security_group_ingress_rule" "allow_ssh_from_myip_app" {
   security_group_id = aws_security_group.vprofile-app-SG.id
   cidr_ipv4         = "${var.MYIP}/32"
