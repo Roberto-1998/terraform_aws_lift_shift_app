@@ -79,7 +79,7 @@ The main goal is to replicate a traditional on-premise deployment into AWS using
    Inside `main-app/`:
 
    ```bash
-   git clone https://github.com/your-org/vprofile-project.git
+   git clone --branch awsliftandshift --single-branch https://github.com/Roberto-1998/vprofile-project.git
    cd vprofile-project
    mvn install
    ```
@@ -102,6 +102,10 @@ The main goal is to replicate a traditional on-premise deployment into AWS using
    cp /tmp/vprofile-v2.war /var/lib/tomcat10/webapps/ROOT.war
    systemctl start tomcat10
    ```
+   
+7. **Credentials for main app interface**
+   - user: admin_vp
+   - password: admin_vp
 
 ## 🔐 Security
 
